@@ -20,13 +20,17 @@ class Block_trial:
 # replace the following line with your code
 # roll the dice block_size number of times, recode in 
 # the outcome dictionary
-        coin_helper.run(self)
+        for i in range(self.block_size):
+        	self.outcomes[self.dice.roll()] += 1
     
     def get_run_stats(self):
 # report the statistics in a list
 # the i-th entry of the list is frequency/percentage 
 # the coin lands on the i-th side
-        return coin_helper.get_run_stats(self)
+        stats = []
+        for i in sorted(self.outcomes):
+        	stats.append(self.outcomes[i]/float(self.block_size))
+        return stats
         
 if __name__ == "__main__":
     a_trial = Block_trial()

@@ -23,10 +23,12 @@ class Dice:
         return self.bounds
                 
     def roll(self):
-# replace the following line with you code
-# it should set self.point as a random var in [0, 1]
-# return which side the dice lands on
-        return dice_helper.roll(self)
+        self.point = random.uniform(0,1)
+        for i in range(self.n_sides):
+            if self.bounds[i] < self.point <= self.bounds[i+1]:
+                break
+        self.lands = i
+        return self.lands
 
 if __name__ == "__main__":       
     d = Dice()

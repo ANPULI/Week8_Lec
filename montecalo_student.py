@@ -6,6 +6,7 @@ Created on Sat Mar 19 16:14:38 2016
 """
 #import dice_student
 import math
+import random
 import matplotlib.pyplot as plt
 
 import montecalo_helper
@@ -28,9 +29,24 @@ def estimate_pi(num_points):
 # - the y-axis cordinates list for those within the unit circle
 # - the x-axis cordinates list for those outside the unit circle
 # - the y-axis cordinates list for those outside the unit circle
-    return montecalo_helper.estimate_pi(num_points)
+    x = random.uniform(-1, 1)
+    y = random.uniform(-1, 1)
+    in_x_set = []
+    in_y_set = []
+    out_x_set = []
+    out_y_set = []
+    if comp_dist((x, y), (0, 0)) <=1 :
+    	est_pi = 4
+    	in_x_set.append(x)
+    	in_y_set.append(y)
+    else:
+    	est_pi = 0
+    	out_x_set.append(x)
+    	out_y_set.append(y)
+    return est_pi, in_x_set, in_y_set, out_x_set, out_y_set
 
 results = []
+
 # total number of random dots per trial
 num_points_per_estimate = 1000
 # perform multiple trails
